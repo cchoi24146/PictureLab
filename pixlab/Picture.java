@@ -187,19 +187,55 @@ public class Picture extends SimplePicture
   public void mirrorHorizontal()
   {
     Pixel[][] pixels = this.getPixels2D();
-    Pixel topPixel = null;
-    Pixel botPixel = null;
-    int width = pixels[0].length;
-    for (int row = 0; row < width / 2; row++)
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int length = pixels.length;
+    for (int row = 0; row < length / 2; row++)
     {
-      for (int col = 0; col < pixels.length; col++)
+      for (int col = 0; col < pixels[0].length; col++)
       {
-        topPixel = pixels[col][row];
-        botPixel = pixels[col][width - 1 - row];
-        botPixel.setColor(topPixel.getColor());
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[length - 1 - row][col];
+        rightPixel.setColor(leftPixel.getColor());
       }
     } 
   }
+
+  public void mirrorHorizontalBotToTop()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int length = pixels.length;
+    for (int row = 0; row < length / 2; row++)
+    {
+      for (int col = 0; col < pixels[0].length; col++)
+      {
+        leftPixel = pixels[length - 1 - row][col];
+        rightPixel = pixels[row][col];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    } 
+  }  
+
+  public void mirrorDiagonal()
+  {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel leftPixel = null;
+    Pixel rightPixel = null;
+    int width = pixels[0].length;
+    int length = pixels.length;
+    int end = Math.min(length, width);
+    for (int row = 0; row < end; row++)
+    {
+      for (int col = 0; col < row; col++)
+      {
+        leftPixel = pixels[row][col];
+        rightPixel = pixels[col][row];
+        rightPixel.setColor(leftPixel.getColor());
+      }
+    } 
+  }  
   
   /** Mirror just part of a picture of a temple */
   public void mirrorTemple()
@@ -223,6 +259,11 @@ public class Picture extends SimplePicture
         rightPixel.setColor(leftPixel.getColor());
       }
     }
+  }
+  
+  public void mirrorArms()
+  {
+      
   }
   
   /** copy from the passed fromPic to the
@@ -306,7 +347,7 @@ public class Picture extends SimplePicture
    */
   public static void main(String[] args) 
   {
-    Picture beach = new Picture("beach.jpg");
+    Picture beach = new Picture("snowman.jpg");
     beach.explore();
     beach.zeroBlue();
     beach.explore();
