@@ -17,7 +17,34 @@ public class PictureTester
     beach.explore();
   }
   
-  /** Method to test mirrorVertical */
+
+  /** Method to test the collage method */
+  public static void testCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.createCollage();
+    canvas.explore();
+  }
+  
+  /** Method to test edgeDetection */
+  public static void testEdgeDetection()
+  {
+    Picture swan = new Picture("swan.jpg");
+    swan.edgeDetection(10);
+    swan.explore();
+  }
+  
+  
+  /*
+   * Chris Choi's Changes
+   */
+  public static void testKeepOnlyBlue() 
+  {
+   Picture beach = new Picture("beach.jpg");
+   
+   beach.keepOnlyBlue();
+   beach.explore();
+  }
   public static void testMirrorVertical()
   {
     Picture caterpillar = new Picture("caterpillar.jpg");
@@ -74,35 +101,7 @@ public class PictureTester
     snowman.mirrorArms();
     snowman.explore();
   }  
-  
-  /** Method to test the collage method */
-  public static void testCollage()
-  {
-    Picture canvas = new Picture("640x480.jpg");
-    canvas.createCollage();
-    canvas.explore();
-  }
-  
-  /** Method to test edgeDetection */
-  public static void testEdgeDetection()
-  {
-    Picture swan = new Picture("swan.jpg");
-    swan.edgeDetection(10);
-    swan.explore();
-  }
-  
-  
-  /*
-   * Chris Choi's Changes
-   */
-  public static void testKeepOnlyBlue() 
-  {
-   Picture beach = new Picture("beach.jpg");
-   
-   beach.keepOnlyBlue();
-   beach.explore();
-  }
-  
+    
   public static void testNegate() 
   {
    Picture beach = new Picture("water.jpg");
@@ -119,6 +118,16 @@ public class PictureTester
    seagull.explore();
    }
   
+ /* public static void testCopy()
+  {
+   Picture canvas = new Picture("640x480.jpg");
+   canvas.createCollage();
+   canvas.explore();
+   
+   Picture seagull = new Picture("seagull.jpg");
+   seagull.copy(seagull, 
+  }
+  */
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
